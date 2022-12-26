@@ -2,6 +2,7 @@ import { useSignupMutation } from 'redux/auth/contactsApi';
 import { useNavigate } from 'react-router-dom';
 import style from '../ContactForm/ContactForm.module.css';
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
 
 export const RegisterForm = () => {
   const [signup] = useSignupMutation();
@@ -22,8 +23,8 @@ export const RegisterForm = () => {
     await signup(credentials)
       .unwrap()
       .then(() => navigate('/contacts'))
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
+        toast.warn('User with this email address already exists');
       });
 
     form.reset();

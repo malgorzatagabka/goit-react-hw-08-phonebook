@@ -25,6 +25,7 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} autoComplete="current-password" className={style.form}>
+      <div className={style.formText}>Please Log In</div>
       <TextField
         label="Email"
         id="demo-helper-text-misaligned"
@@ -32,6 +33,8 @@ export const LoginForm = () => {
         name="email"
         required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        color="secondary" 
+        className={style.formInput}
       />
       <label className={style.formText}>
        
@@ -40,12 +43,12 @@ export const LoginForm = () => {
       <label>
         <TextField
           label="Password"
-        id="demo-helper-text-misaligned"
+        id="validation-outlined-input"
           type="password"
           required
           name="password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-          title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+          color="secondary" 
+         className={style.formInput}
         />
       </label>
       <button className={style.formBtn} type="submit">LOG IN</button>

@@ -9,7 +9,7 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async evt => {
-    const form = evt.target;
+    const form = evt.target.toLowerCase();
     const {
       name: { value: name },
       email: { value: email },
@@ -32,6 +32,7 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} autoComplete="off" className={style.form}>
+      <div className={style.formText}>Please Sign In</div>
       <label className={style.formText}>
         <TextField
           label="Name"
@@ -40,6 +41,7 @@ export const RegisterForm = () => {
           name="name"
           required
           className={style.formInput}
+          color="secondary" 
         />
       </label>
       <label className={style.formText}>
@@ -49,19 +51,24 @@ export const RegisterForm = () => {
           type="email"
           name="email"
           autoComplete="off"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
           className={style.formInput}
+          color="secondary" 
         />
       </label>
       <label className={style.formText}>
         <TextField
           label="Password"
+          helperText="Password should contain min. eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
           id="outlined-basic"
           type="password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
           name="password"
           autoComplete="off"
           required
           className={style.formInput}
+          color="secondary" 
         />
       </label>
       <button className={style.formBtn} type="submit">

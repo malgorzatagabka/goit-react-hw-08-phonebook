@@ -7,6 +7,8 @@ import {
   useDeleteContactMutation,
 } from 'redux/auth/contactsApi';
 import Loader from 'components/Loader/Loader';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 export const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
@@ -33,14 +35,14 @@ export const ContactList = () => {
           <div className={style.wrapper}>
             <span className={style.contactsName}>{`${name}`}</span>
             <span className={style.contactsPhone}>{`${number}`}</span>
-
-            <button
-              type="button"
-              className={style.contactBtn}
+            <IconButton
+              disabled={isLoading}
               onClick={() => deleteContact(id)}
+              edge="end"
+              aria-label="delete"
             >
-              Delete
-            </button>
+              <DeleteIcon />
+            </IconButton>
           </div>
         </li>
       ))}

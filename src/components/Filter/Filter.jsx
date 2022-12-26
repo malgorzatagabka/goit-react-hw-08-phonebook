@@ -23,6 +23,7 @@ export const Filter = () => {
         type="name"
         label="Search"
         id="demo-helper-text-misaligned"
+        color="secondary" 
         onChange={onChange} />
     </label>
   );

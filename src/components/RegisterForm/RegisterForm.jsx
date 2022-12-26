@@ -9,7 +9,7 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async evt => {
-    const form = evt.target.toLowerCase();
+    const form = evt.target;
     const {
       name: { value: name },
       email: { value: email },
@@ -47,7 +47,7 @@ export const RegisterForm = () => {
       <label className={style.formText}>
         <TextField
           label="Email"
-          id="demo-helper-text-misaligned"
+          id="outlined-basic"
           type="email"
           name="email"
           autoComplete="off"
@@ -61,7 +61,7 @@ export const RegisterForm = () => {
         <TextField
           label="Password"
           helperText="Password should contain min. eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
-          id="outlined-basic"
+          
           type="password"
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
           name="password"

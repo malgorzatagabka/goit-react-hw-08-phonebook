@@ -47,7 +47,7 @@ const ContactForm = () => {
       <TextField
         className={style.formInput}
         label="Name"
-        id="demo-helper-text-misaligned"
+        id={id}
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -59,7 +59,7 @@ const ContactForm = () => {
       <TextField
         className={style.formInput}
         label="Phone Number"
-        id="demo-helper-text-misaligned"
+        id={id}
         required
         type="tel"
         name="number"

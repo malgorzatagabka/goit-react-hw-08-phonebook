@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 
 import React from 'react';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/auth/contactsApi';
-
+import { toast } from 'react-toastify';
 import style from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -29,8 +29,11 @@ const ContactForm = () => {
 
     data.forEach(contact => {
       if (contact.name.toLowerCase() === normalizedName) {
-        alert(`${contact.name} is already in contacts`);
+        toast.info(`${contact.name} is already in contacts`, {
+  icon: "🚀",  theme: "dark"
+});
         nameOntheList = true;
+        
       }
     });
 

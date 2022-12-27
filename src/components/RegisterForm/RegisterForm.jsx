@@ -25,7 +25,7 @@ export const RegisterForm = () => {
       .then(() => navigate('/contacts'))
       .catch(() => {
         toast.warn('User with this email address already exists', {
-  icon: "🚀",  theme: "dark"
+  icon: "🦄",  theme: "dark"
 });
       });
 

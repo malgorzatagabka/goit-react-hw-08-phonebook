@@ -30,7 +30,7 @@ const ContactForm = () => {
     data.forEach(contact => {
       if (contact.name.toLowerCase() === normalizedName) {
         toast.info(`${contact.name} is already in contacts`, {
-  icon: "🚀",  theme: "dark"
+  icon: "🦄",  theme: "dark"
 });
         nameOntheList = true;
         

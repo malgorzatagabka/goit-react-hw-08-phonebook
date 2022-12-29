@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { AppBar } from './AppBar/AppBar';
 import { Suspense } from 'react';
 
+
 export const Layout = () => {
   return (
     <>
@@ -13,7 +14,7 @@ export const Layout = () => {
       
       <Suspense fallback={null}>
         <Outlet />
-      </Suspense>
+        </Suspense>
        <ToastContainer autoClose={3000} />
       </div>
       </>

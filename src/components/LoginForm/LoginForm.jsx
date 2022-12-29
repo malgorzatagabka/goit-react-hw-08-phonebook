@@ -3,21 +3,36 @@ import { useLoginMutation } from 'redux/auth/contactsApi';
 import { useDispatch } from 'react-redux';
 import style from "../ContactForm/ContactForm.module.css"
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
+
 
 export const LoginForm = () => {
+
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      login({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
 
+  
+  const handleSubmit = async evt => {
+    const form = evt.target;
+    const {
+      email: { value: email },
+      password: { value: password },
+    } = form;
+
+    const credentials = { email, password };
+    evt.preventDefault();
+    await login(credentials)
+      .unwrap()
+      .then(({ token }) => localStorage.setItem('token', token))
+      .catch(() => {
+        toast.warn('Please check your email address or password',{
+  icon: "🦄",  theme: "dark"
+});
+      });
+
+    const token = localStorage.getItem('token');
+   dispatch(login(token))
     navigate('/contacts');
 
     form.reset();

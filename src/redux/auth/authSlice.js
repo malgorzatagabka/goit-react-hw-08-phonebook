@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { contactsApi } from './contactsApi';
 
+const token = localStorage.getItem('token')
+  ? localStorage.getItem('token')
+  : null;
+
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token,
   isLoggedIn: false,
   isError: null,
 };
@@ -11,6 +15,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+    setCredentials: (state, { payload }) => {
+      state.user = payload;
+    },
+  },
 
   extraReducers: builder => {
     builder.addMatcher(
@@ -38,6 +48,7 @@ const authSlice = createSlice({
       }
     );
     builder.addMatcher(contactsApi.endpoints.logout.matchFulfilled, state => {
+      localStorage.removeItem('token');
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
@@ -53,3 +64,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
+export const { setCredentials } = authSlice.actions;
